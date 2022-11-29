@@ -17,7 +17,7 @@ func main() {
 	//连接数据库
 	database.Connect()
 	defer database.RedisConn.Close()
-	database.Migrate()
+
 	app := iris.New()
 	// recover 中间件从任何异常中恢复，如果有异常，则写入500状态码（服务器内部错误）。
 	app.Use(recover.New())
