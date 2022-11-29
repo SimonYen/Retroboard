@@ -16,8 +16,3 @@ func Connect() {
 	}
 	RedisConn = RC
 }
-
-// 初始化数据库
-// func Migrate() {
-// 	//检测apps键是否存在
-// }
