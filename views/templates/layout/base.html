@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" X-Content-Type-Options=nosniff" http-equiv="Content-Type">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/blueprint.css">
+    <link rel="stylesheet" href="/assets/css/nes.css">
+    <link rel="stylesheet" href="/assets/css/bottom.css">
+    <link rel="shortcut icon" href="/assets/img/starry_night.png" type="image/x-icon">
+    <title>
+        {%block title%}
+        {%endblock%}
+    </title>
+    <style>
+        body {
+            background-image: url("/assets/img/starry_night.png");
+        }
+    </style>
+</head>
+
+<body>
+    {%include "layout/top.html"%}
+    {%block content%}
+    {%endblock%}
+    {%include "layout/bottom.html"%}
+</body>
+<script src="assets/js/showTime.js"></script>
+</html>
