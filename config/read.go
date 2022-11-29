@@ -3,7 +3,6 @@ package config
 import (
 	"fmt"
 
-	"github.com/go-redis/redis/v9"
 	"github.com/kataras/iris/v12"
 	"github.com/spf13/viper"
 )
@@ -38,11 +37,7 @@ func (receiver *serverConfig) ToAddr() iris.Runner {
 	return iris.Addr(fmt.Sprintf("%s:%d", receiver.addr, receiver.port))
 }
 
-// 返回*redis.Options，用于redis的连接
-func (receiver *redisConfig) ToOptions() *redis.Options {
-	return &redis.Options{
-		Addr:     fmt.Sprintf("%s:%d", receiver.addr, receiver.port),
-		Password: receiver.psw,
-		DB:       int(receiver.db),
-	}
+// 返回redis url，用于redis的连接
+func (receiver *redisConfig) ToString() string {
+	return fmt.Sprintf("redis://:%s@%s:%d/%d", receiver.psw, receiver.addr, receiver.port, receiver.db)
 }

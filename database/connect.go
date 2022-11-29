@@ -3,17 +3,21 @@ package database
 import (
 	"Retroboard/config"
 
-	"github.com/go-redis/redis/v9"
+	"github.com/gomodule/redigo/redis"
 )
 
-var RedisClient *redis.Client
+var RedisConn redis.Conn
 
 // 连接到redis数据库
 func Connect() {
-	RedisClient = redis.NewClient(config.RedisConfigInstance.ToOptions())
+	RC, err := redis.DialURL(config.RedisConfigInstance.ToString())
+	if err != nil {
+		panic(err)
+	}
+	RedisConn = RC
 }
 
 // 初始化数据库
-func Migrate() {
-
-}
+// func Migrate() {
+// 	//检测apps键是否存在
+// }
