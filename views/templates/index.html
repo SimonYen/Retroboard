@@ -5,4 +5,23 @@ Retro Dashboard
 {%endblock%}
 
 {%block content%}
+
+<div bp="grid">
+    {%for l in list%}
+    <div bp="4@md  padding-left--lg padding-right--lg padding-top--lg padding-bottom--lg">
+        <div class="nes-container is-dark with-title is-centered">
+            <h1 class="title">{{l}}</h1>
+            <p>Good morning. Thou hast had a good night's sleep, I hope.</p>
+            <a class="nes-btn is-success" href="#">Launch</a>
+            <a class="nes-btn is-primary" href="#">Motify</a>
+            <a class="nes-btn is-error" href="#">Delete</a>
+        </div>
+    </div>
+    {%empty%}
+    Nothing here.
+    {%endfor%}
+</div>
+
+
+
 {%endblock%}
