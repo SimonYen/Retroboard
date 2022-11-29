@@ -1,9 +1,9 @@
 package main
 
 import (
-	"RetroDashboard/config"
-	"RetroDashboard/controllers"
-	"RetroDashboard/views"
+	"Retroboard/config"
+	"Retroboard/controllers"
+	"Retroboard/views"
 
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/middleware/logger"

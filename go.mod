@@ -1,4 +1,4 @@
-module RetroDashboard
+module Retroboard
 
 go 1.19
 
