@@ -6,5 +6,5 @@ function setClock(){
 }
 function resetBanner(){
     b=document.getElementById("banner")
-    b.innerHTML="RETRO DASHBOARD"
+    b.innerHTML="RETROBOARD"
 }
