@@ -7,3 +7,12 @@ package models
 type ApplicationManager struct {
 	Apps []Application
 }
+
+func NewApplicationManager() *ApplicationManager {
+	return new(ApplicationManager)
+}
+
+func (receiver *ApplicationManager) GetAllApplications() {
+	//从set中获取所有的application名
+
+}
