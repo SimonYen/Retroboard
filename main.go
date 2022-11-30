@@ -3,6 +3,7 @@ package main
 import (
 	"Retroboard/config"
 	"Retroboard/controllers"
+	"Retroboard/middlewares"
 	"Retroboard/views"
 
 	"github.com/kataras/iris/v12"
@@ -18,7 +19,8 @@ func main() {
 	app := iris.New()
 	// recover 中间件从任何异常中恢复，如果有异常，则写入500状态码（服务器内部错误）。
 	app.Use(recover.New())
-
+	app.OnErrorCode(iris.StatusNotFound, middlewares.PageNotFound)
+	app.OnErrorCode(iris.StatusInternalServerError, middlewares.InternalServerError)
 	//处理静态文件
 	app.HandleDir("/assets", iris.Dir("./views/assets"))
 
