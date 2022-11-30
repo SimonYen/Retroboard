@@ -10,15 +10,35 @@ Retroboard
     {%for l in list%}
     <div bp="4@md  padding-left--lg padding-right--lg padding-top--lg padding-bottom--lg">
         <div class="nes-container is-dark with-title is-centered">
-            <h1 class="title">{{l}}</h1>
-            <p>Good morning. Thou hast had a good night's sleep, I hope.</p>
+            <h1 class="title">{{l.Name}}</h1>
+            <p>{{l.Desc}}</p>
             <a class="nes-btn is-success" href="#">Launch</a>
             <a class="nes-btn is-primary" href="#">Motify</a>
             <a class="nes-btn is-error" href="#">Delete</a>
         </div>
     </div>
     {%empty%}
-    Nothing here.
+    <div bp="10 offset-2">
+        <section class="nes-container is-dark">
+            <section class="message-list">
+                <section class="message -left">
+                    <i class="nes-bulbasaur"></i>
+                    <div class="nes-balloon from-left is-dark">
+                        <p>Nothing here! Kirby</p>
+                    </div>
+                </section>
+
+                <section class="message -right">
+                    <div class="nes-balloon from-right is-dark">
+                        <p>You seem like to create a box to contain your web application!</p>
+                        <p>Have you seen the bottom? Click the <span class="nes-text is-success">Adding One</span>
+                            button!</p>
+                    </div>
+                    <i class="nes-kirby"></i>
+                </section>
+            </section>
+        </section>
+    </div>
     {%endfor%}
 </div>
 

@@ -5,8 +5,6 @@ import (
 )
 
 func IndexController(ctx iris.Context) {
-	test_list := []string{"测试", "哈哈", "牛逼"}
-	ctx.ViewData("list", test_list)
 	ctx.View("index.html")
 }
 

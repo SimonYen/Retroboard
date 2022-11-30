@@ -2,17 +2,27 @@ package database
 
 import (
 	"Retroboard/config"
+	"Retroboard/models"
 
-	"github.com/gomodule/redigo/redis"
+	_ "github.com/mattn/go-sqlite3"
+	"xorm.io/xorm"
 )
 
-var RedisConn redis.Conn
+// 定义xorm引擎
+var Eng *xorm.Engine
 
-// 连接到redis数据库
 func Connect() {
-	RC, err := redis.DialURL(config.RedisConfigInstance.ToString())
+	e, err := xorm.NewEngine("sqlite3", config.SqliteConfigInstance.ToPath())
 	if err != nil {
 		panic(err)
 	}
-	RedisConn = RC
+	Eng = e
+}
+
+// 数据库迁移
+func Migrate() {
+	err := Eng.Sync2(new(models.Application))
+	if err != nil {
+		panic(err)
+	}
 }

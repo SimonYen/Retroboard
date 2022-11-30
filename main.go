@@ -3,7 +3,6 @@ package main
 import (
 	"Retroboard/config"
 	"Retroboard/controllers"
-	"Retroboard/database"
 	"Retroboard/views"
 
 	"github.com/kataras/iris/v12"
@@ -15,8 +14,6 @@ func main() {
 	//读取配置文件
 	config.Read()
 	//连接数据库
-	database.Connect()
-	defer database.RedisConn.Close()
 
 	app := iris.New()
 	// recover 中间件从任何异常中恢复，如果有异常，则写入500状态码（服务器内部错误）。
