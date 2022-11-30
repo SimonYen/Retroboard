@@ -13,7 +13,7 @@ Retroboard
             <h1 class="title">{{l.Name}}</h1>
             <p>{{l.Description}}</p>
             <a class="nes-btn is-success" href="http://{{l.URL}}" target="_blank">Launch</a>
-            <a class="nes-btn is-error" href="#">Delete</a>
+            <a class="nes-btn is-error" href="/delete/{{l.Id}}">Delete</a>
         </div>
     </div>
     {%empty%}

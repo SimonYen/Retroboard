@@ -50,6 +50,7 @@ func main() {
 	app.Get("/about", controllers.AboutController)
 	app.Get("/add", controllers.AddFormController)
 	app.Post("/create", controllers.CreateApplicationController)
+	app.Get("/delete/{id:int64}", controllers.DeleteApplicationController)
 
 	//运行
 	app.Run(config.ServerConfigInstance.ToAddr())
