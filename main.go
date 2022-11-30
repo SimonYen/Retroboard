@@ -3,6 +3,7 @@ package main
 import (
 	"Retroboard/config"
 	"Retroboard/controllers"
+	"Retroboard/database"
 	"Retroboard/middlewares"
 	"Retroboard/views"
 
@@ -15,7 +16,9 @@ func main() {
 	//读取配置文件
 	config.Read()
 	//连接数据库
-
+	database.Connect()
+	//迁移数据库
+	database.Migrate()
 	app := iris.New()
 	// recover 中间件从任何异常中恢复，如果有异常，则写入500状态码（服务器内部错误）。
 	app.Use(recover.New())
@@ -45,6 +48,8 @@ func main() {
 	//路由
 	app.Get("/", controllers.IndexController)
 	app.Get("/about", controllers.AboutController)
+	app.Get("/add", controllers.AddFormController)
+	app.Post("/create", controllers.CreateApplicationController)
 
 	//运行
 	app.Run(config.ServerConfigInstance.ToAddr())

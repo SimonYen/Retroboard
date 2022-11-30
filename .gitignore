@@ -1,2 +1,3 @@
 Retroboard
 config/config.toml
+database/board.db

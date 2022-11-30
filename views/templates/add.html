@@ -1,0 +1,28 @@
+{%extends "layout/base.html"%}
+
+{%block title%}
+Adding One
+{%endblock%}
+
+{%block content%}
+<div bp="grid vertical-center">
+    <div bp="8 offset-3">
+        <div class="nes-container with-title is-centered is-dark">
+            <p class="title">FORM</p>
+            <form action="/create" method="post">
+                <div class="nes-field">
+                    <label for="app-name">Name</label>
+                    <input type="text" id="app_name" class="nes-input" name="app_name">
+                </div>
+                <label for="app_desc">Description</label>
+                <textarea id="app_desc" class="nes-textarea" name="app_desc"></textarea>
+                <div class="nes-field">
+                    <label for="app_url">URL</label>
+                    <input type="text" id="app_url" class="nes-input" name="app_url">
+                </div>
+                <button type="submit" class="nes-btn is-primary">ADD</button>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}
