@@ -11,10 +11,10 @@ import (
 var ServerConfigInstance serverConfig
 var SqliteConfigInstance sqliteConfig
 
-func set() {
+func set(path string) {
 	viper.SetConfigName("config")
 	viper.SetConfigType("toml")
-	viper.AddConfigPath("./config")
+	viper.AddConfigPath(path)
 	err := viper.ReadInConfig()
 	if err != nil {
 		panic(nil)
@@ -22,8 +22,8 @@ func set() {
 }
 
 // 将配置文件中的信息填入到相应的struct中
-func Read() {
-	set()
+func Read(path string) {
+	set(path)
 	ServerConfigInstance.addr = viper.GetString("server.addr")
 	ServerConfigInstance.port = viper.GetUint16("server.port")
 	SqliteConfigInstance.path = viper.GetString("sqlite.path")

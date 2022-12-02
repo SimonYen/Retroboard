@@ -11,8 +11,14 @@ import (
 // 定义xorm引擎
 var Eng *xorm.Engine
 
-func Connect() {
-	e, err := xorm.NewEngine("sqlite3", config.SqliteConfigInstance.ToPath())
+func Connect(useConfigFile bool, path string) {
+	arg := ""
+	if useConfigFile {
+		arg = config.SqliteConfigInstance.ToPath()
+	} else {
+		arg = path
+	}
+	e, err := xorm.NewEngine("sqlite3", arg)
 	if err != nil {
 		panic(err)
 	}

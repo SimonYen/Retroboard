@@ -6,6 +6,7 @@ import (
 	"Retroboard/database"
 	"Retroboard/middlewares"
 	"Retroboard/views"
+	"flag"
 
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/middleware/logger"
@@ -13,10 +14,23 @@ import (
 )
 
 func main() {
-	//读取配置文件
-	config.Read()
+	//定义命令行参数
+	addressPtr := flag.String("addr", "0.0.0.0:10001", "Server address, default value: 0.0.0.0:10001")
+	pathPtr := flag.String("path", "./board.db", "Sqlite3 database path, default value: ./board.db")
+	configPtr := flag.String("config", "", "Config file directoty, default value: \"\" , means you do not use config file.\n If you want to use config file, pls rename the config file as config.toml")
+
+	flag.Parse()
+	useConfig := false
+	if *configPtr != "" {
+		useConfig = true
+	}
+
+	//读取配置文件,如果设置了
+	if useConfig {
+		config.Read(*configPtr)
+	}
 	//连接数据库
-	database.Connect()
+	database.Connect(useConfig, *pathPtr)
 	//迁移数据库
 	database.Migrate()
 	app := iris.New()
@@ -53,5 +67,9 @@ func main() {
 	app.Get("/delete/{id:int64}", controllers.DeleteApplicationController)
 
 	//运行
-	app.Run(config.ServerConfigInstance.ToAddr())
+	if useConfig {
+		app.Run(config.ServerConfigInstance.ToAddr())
+	} else {
+		app.Run(iris.Addr(*addressPtr))
+	}
 }
